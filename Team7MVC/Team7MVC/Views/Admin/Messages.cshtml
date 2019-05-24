@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Team7MVC.Models.Messages>
+
+@{
+    ViewBag.Title = "Messages Management";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between">
+                <div class="d-inline tool-left">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        訊息排序
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">ID</a>
+                        <a class="dropdown-item" href="#">問題種類</a>
+                        <a class="dropdown-item" href="#">訊息日期</a>
+                    </div>
+                </div>
+                <div class="d-inline tool-right">
+                    @*<i class="fas fa-plus"></i>*@
+                    @Html.ActionLink("新增訂單", "Create", "", new { @class = "btn btn-success" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"></div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Phone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.QuestionCategory)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Datetime)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Phone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.QuestionCategory)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Comments)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Datetime)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("回覆", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("完成", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JQ {
+    <script>
+        $(document).ready(function () {
+
+            $("li").each(function () {
+
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                }
+
+            });
+
+            $("#messages").addClass("active");
+
+            $("li").on("click", function () {
+                $("#messages").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+}

@@ -1,0 +1,324 @@
+﻿@model IEnumerable<Team7MVC.Models.Customers>
+@{
+    ViewBag.Title = "Index";
+}
+
+@section CSS
+    {
+    <link href="~/Assets/css/IndexStyles.css" rel="stylesheet" />
+}
+
+<header class="page-header">
+    <nav class="navbar navbar-expand-lg navbar-dark px-0 py-auto">
+        <button class="navbar-toggler border-0 px-3" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand m-0 px-3" href="@Url.Action("Index","Wine")" id="logo">
+            <img src="~/Assets/img_Index/logo_light.png" alt="logo">
+        </a>
+
+        <div class="collapse navbar-collapse px-3" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-4" href="#">INSIDE THE MACALLAN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-4" href="@Url.Action("ProductPage","Wine")">SHOP</a>
+                </li>
+            </ul>
+            <div class="input-group mr-5 px-3" id="header-search">
+                <input type="text" class="form-control text-white border-dark whiteplaceholder" placeholder="Search"
+                       aria-label="Search" aria-describedby="search" id="search-input">
+                <div class="input-group-append">
+                    <button class="btn btn-dark border-0 text-white font-weight-bold" type="button"
+                            id="search">
+                        Search
+                    </button>
+                </div>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="@Url.Action("ShoppingCart","Wine")">
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="@Url.Action("Contact","Wine")">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white dropdown-toggle px-3" href="#" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        @{
+                            if (User.Identity.Name == string.Empty)
+                            {
+                                @Html.ActionLink("Sign in ", "Login", new { ActionName = ViewBag.Title }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Create account", "Register", "Account", null, new { @class = "dropdown-item" })
+                            }
+                            else
+                            {
+                                @*<a class="dropdown-item" href="@Url.Action("SignOut","Wine")">@User.Identity.Name 登出</a>*@
+                                @Html.ActionLink(User.Identity.Name, "CustomerEdit", "Customer", new { id = User.Identity.Name }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("My Account", "CustomerEdit", "Customer", new { id = User.Identity.Name }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Sign out", "SignOut", "Wine", null, new { @class = "dropdown-item" })}
+                        }
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleFade" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleFade" data-slide-to="1"></li>
+        <li data-target="#carouselExampleFade" data-slide-to="2"></li>
+        <li data-target="#carouselExampleFade" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Assets/img_Index/carousel01.jpg" class="d-block" alt="0">
+            <div class="position-absolute text-white text-center">
+                <p class="font-italic">—— M Black ——</p>
+                <h2 class="my-4 font-weight-bold">水晶的黑暗面</h2>
+                <p class="d-none d-lg-block mb-3">
+                    The Macallan Decanter Series 中最新推出、最為繁複的 M Black
+                    系列，意在彰顯色澤更濃郁、煙煄香氣更鮮明的特色
+                </p>
+                <a href="#" class="btn text-white font-weight-bold rounded-0 link-btn">探索</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Assets/img_Index/carousel02.jpg" class="d-block" alt="1">
+            <div class="position-absolute text-white text-center">
+                <p class="font-italic">—— 卓越的源泉 ——</p>
+                <h2 class="my-4 font-weight-bold">創新結合傳統</h2>
+                <p class="d-none d-lg-block mb-3">
+                    與世界級名廚、來自 El Celler de Can Roca 的羅卡三兄弟（Roca
+                    brothers）一起展開探索蘇格蘭傳統美食之旅。
+                </p>
+                <a href="#" class="btn text-white font-weight-bold rounded-0 link-btn">探索</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Assets/img_Index/carousel03.jpg" class="d-block" alt="2">
+            <div class="position-absolute text-white text-center">
+                <p class="font-italic">—— Edition No. 4 ——</p>
+                <h2 class="my-4 font-weight-bold">A CELEBRATION OF THE MACALLAN'S WHISKY MAKING HERITAGE</h2>
+                <p class="d-none d-lg-block mb-3">
+                    This limited edition marks the coming together of our history and
+                    new horizons in the creation of
+                    two structural masterpieces: a remarkable whisky and a magnificent new distillery.
+                </p>
+                <a href="#" class="btn text-white font-weight-bold rounded-0 link-btn">DISCOVER</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/Assets/img_Index/carousel04.jpg" class="d-block" alt="3">
+            <div class="position-absolute text-white text-center">
+                <p class="font-italic">—— 卓越的源泉 ——</p>
+                <h2 class="my-4 font-weight-bold">THE MACALLAN 之家</h2>
+                <p class="d-none d-lg-block mb-3">
+                    我們的新酒廠與遊客體驗中心是 Speyside（斯佩塞）區第一座由國際知名建築師設計的酒廠；這座新園區開啟了一扇窗，讓您一窺 The
+                    Macallan 獨一無二的威士忌釀造過程。
+                </p>
+                <a href="#" class="btn text-white font-weight-bold rounded-0 link-btn">探索</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="row mx-0 my-5 p-0">
+        <div class="col-12 col-lg-6 text-center">
+            <img src="~/Assets/img_Index/mac-2018-sherry-oak-18-yo-bottle-rgb-png-low-res-copy-2x.png" alt="" style="height: 338px;">
+            <img src="~/Assets/img_Index/mac-2018-double-cask-12-yo-bottle-rgb-png-1-2x.png" alt="" style="height: 438px;">
+            <img src="~/Assets/img_Index/mac-2018-sherry-oak-12-yo-bottle-rgb-png-2x.png" alt="" style="height: 558px;">
+            <img src="~/Assets/img_Index/mac-2018-triple-cask-12-yo-bottle-rgb-png-copy-2x.png" alt="" style="height: 438px;">
+            <img src="~/Assets/img_Index/mac-2018-triple-cask-18-yo-bottle-rgb-png-low-res-2x.png" alt=""
+                 style="height: 338px;">
+        </div>
+        <div class="col-12 my-auto col-lg-6 mx-auto text-center">
+            <div class="container">
+                <p class="font-italic">── 我們的威士忌 ──</p>
+                <h2 class="my-3">探索我們的單一麥芽威士忌</h2>
+                <p class="mx-auto my-3">每一款 Macallan 單一麥芽威士忌均展現出自 1824 年以來，我們對於製桶與釀酒工藝無人能及的堅持。</p>
+                <a href="#" class="btn font-weight-bold rounded-0 my-3 link-btn">深入探索</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="introduction">
+    <div class="container">
+        <div class="row p-0 m-0">
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card-1 d-flex align-items-end px-5">
+                    <div class="content">
+                        <p class="font-italic text-white">The Macallan Estate</p>
+                        <h2 class="text-white">A CELEBRATION OF OUR PAST, PRESENT AND FUTURE</h2>
+                        <a href="#" class="btn text-white font-weight-bold border-0 rounded-0 link-btn">EXPLORE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="card-2 d-flex align-items-end px-5">
+                    <div class="content">
+                        <p class="font-italic text-white">The Macallan Estate</p>
+                        <h2 class="text-white">PLAN YOUR VISIT</h2>
+                        <a href="#" class="btn text-white font-weight-bold border-0 rounded-0 link-btn">EXPLORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-0 m-0">
+            <div class="col-12 mb-4">
+                <div class="card-3  d-flex align-items-center px-5">
+                    <div class="content text-center">
+                        <p class="font-italic text-white">The Macallan 三部曲</p>
+                        <h2 class="text-white">源自非凡的橡木桶</h2>
+                        <p class="text-white">由酒桶主導風味體驗的酒款系列，各有一段與眾不同的故事。</p>
+                        <a href="#" class="btn text-white font-weight-bold border-0 rounded-0 link-btn">EXPLORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="special d-flex align-items-center justify-content-center">
+    <div class="content text-center">
+        <p class="font-italic text-white">── 六大標柱 ──</p>
+        <h2 class="text-white">特色風味深入心坎</h2>
+        <p class="text-white">
+            這六大標柱是我們一切作為的基石。無論是釀酒廠址還是釀酒流程、釀酒人員還是釀酒熱情，The Macallan
+            獨特醇酒的背後都由這六大標柱所支撐。
+        </p>
+        <a href="#" class="btn text-white font-weight-bold rounded-0 link-btn">進一步閱讀</a>
+    </div>
+</div>
+<footer class="page-footer">
+    <div class="footer-email d-flex justify-content-center align-items-center text-center">
+        <p class="text-white m-0">訂閱 THE MACALLAN 的最新消息</p>
+        <div class="input-group ml-4" style="width: 26rem;">
+            <input type="text" class="form-control text-white border-0 rounded-0 whiteplaceholder"
+                   placeholder="輸入您的電子郵件地址" aria-label="input your email" aria-describedby="sub">
+            <div class="input-group-append">
+                <button type="button" class="border-0 text-white font-weight-bold rounded-0" id="sub">訂閱</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-menu container-fluid my-5">
+        <div class="row justify-content-around m-0 p-0">
+            <div class="d-none d-lg-block">
+                <img src="~/Assets/img_Index/estate_logo.png" alt="">
+            </div>
+            <div>
+                <ul class="list-unstyled">
+                    <li class="border-bottom border-dark mb-3" style="padding-bottom: 1.25rem;">
+                        <a href="#">
+                            ABOUT
+                            US
+                        </a>
+                    </li>
+                    <li class="mb-3"><a href="#">INSIDE THE MACALLAN</a></li>
+                    <li class="mb-3"><a href="#">THE SIX PILLARS</a></li>
+                    <li class="mb-3"><a href="#">DISTILLERY</a></li>
+                    <li class="mb-3"><a href="#">CAREERS</a></li>
+                    <li class="mb-3"><a href="#">CONTACT US</a></li>
+                    <li class="mb-3"><a href="#">NEWSLETTER</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="list-unstyled">
+                    <li class="border-bottom border-dark mb-3" style="padding-bottom: 1.25rem;">
+                        <a href="#">
+                            OUR
+                            WHISKY
+                        </a>
+                    </li>
+                    <li class="mb-3"><a href="#">EXPLORE OUR SINGLE MALTS</a></li>
+                    <li class="mb-3"><a href="#">SHERRY OAK</a></li>
+                    <li class="mb-3"><a href="#">DOUBLE CASK</a></li>
+                    <li class="mb-3"><a href="#">TRIPLE CASK MATURED</a></li>
+                    <li class="mb-3"><a href="#">THE QUEST COLLECTION</a></li>
+                    <li class="mb-3"><a href="#">THE MASTERS DECANTER SERIES</a></li>
+                    <li class="mb-3"><a href="#">FINE & RARE</a></li>
+                    <li class="mb-3"><a href="#">LIMITED RELEASES</a></li>
+                    <li class="mb-3"><a href="#">TRAVEL RETAIL EXCLUSIVES</a></li>
+                    <li class="mb-3"><a href="#">PAST RELEASES</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="list-unstyled">
+                    <li class="border-bottom border-dark mb-3" style="padding-bottom: 1.25rem;">
+                        <a href="#">SHOP</a>
+                    </li>
+                    <li class="mb-3"><a href="#">FAQS</a></li>
+                    <li class="mb-3"><a href="#">DELIVERY INFORMATION</a></li>
+                    <li class="mb-3"><a href="#">RETURNS INFORMATION</a></li>
+                    <li class="mb-3"><a href="#">CONTACT US</a></li>
+                    <li class="mb-3"><a href="#">TERMS AND CONDITIONS OF SALE</a></li>
+                    <li class="mb-3"><a href="#">DISTILLERY TOURS - FAQS</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-share border-bottom border-dark">
+        <div class="d-flex justify-content-around mx-auto mt-3 pb-4">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="footer-link d-flex justify-content-center mt-4">
+        <a class="px-2 border-right" href="#">Drink Responsibly</a>
+        <a class="px-2 border-right" href="#">The Edrington Group</a>
+        <a class="px-2 border-right" href="#">Privacy Policy</a>
+        <a class="px-2" href="#">Terms of Use</a>
+    </div>
+    <p class="text-secondary text-center my-3">&copy; 2019 The Macallan Distillers Limited, The Macallan</p>
+    <img class="footer-img" src="~/Assets/img_Index/warning.svg" alt="">
+</footer>
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $(window).scroll(function () {
+                var scrollVal = $(this).scrollTop();
+                if (scrollVal > 0) {
+                    $("header").addClass("fixed-header");
+                    $("header nav")
+                        .removeClass("navbar-dark")
+                        .addClass("navbar-light");
+                    $("header a img").prop("src", "../Assets/img_Index/logo_dark.png");
+                    $("header .nav-item > a")
+                        .removeClass("text-white")
+                        .addClass("text-dark");
+                    $("#search-input")
+                        .removeClass("whiteplaceholder")
+                        .addClass("blackplaceholder");
+                }
+                if (scrollVal == 0) {
+                    $("header").removeClass("fixed-header");
+                    $("header nav")
+                        .removeClass("navbar-light")
+                        .addClass("navbar-dark");
+                    $("header a img").prop("src", "../Assets/img_Index/logo_light.png");
+                    $("header .nav-item > a")
+                        .removeClass("text-dark")
+                        .addClass("text-white");
+                    $("#search-input")
+                        .removeClass("blackplaceholder")
+                        .addClass("whiteplaceholder");
+                }
+            });
+        });
+    </script>
+}
