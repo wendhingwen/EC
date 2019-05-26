@@ -13,10 +13,12 @@ namespace Team7MVC.Controllers
     public class WineController : Controller
     {
         public readonly WineRepository _repo;
+        public readonly MessageRepository mess_repo;
 
         public WineController()
         {
             _repo = new WineRepository();
+            mess_repo = new MessageRepository();
         }
 
         // GET: Wine
@@ -117,7 +119,7 @@ namespace Team7MVC.Controllers
         {
             //var question = new Questions { Name = name, Email = email, Phone = phone, QuestionCategory = questionCategory, Comments = comments, Datetime = DateTime.Now };
 
-            return _repo.CreateMessages(m);
+            return mess_repo.CreateMessages(m);
         }
 
         [HttpGet]

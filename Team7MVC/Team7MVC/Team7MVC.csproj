@@ -149,6 +149,7 @@
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\AdminRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
+    <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\WineRepository.cs" />
     <Compile Include="ViewModels\AdminCustomersViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

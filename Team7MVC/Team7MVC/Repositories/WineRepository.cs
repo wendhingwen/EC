@@ -117,7 +117,7 @@ namespace Team7MVC.Repositories
             //List<Questions> questions;
             using (conn)
             {
-                string sql = "INSERT INTO Messages(Name, Email, Phone, QuestionCategory, Comments, Datetime) VALUES (@name, @email, @phone, @questionCategory, @comments, @dateTime)";
+                string sql = @"INSERT INTO Messages(Name, Email, Phone, QuestionCategory, Comments, Datetime) VALUES (@name, @email, @phone, @questionCategory, @comments, @dateTime)";
                 affectedRows = conn.Execute(sql, new { mess.Name, mess.Email, mess.Phone, mess.QuestionCategory, mess.Comments, mess.Datetime });
             }
 

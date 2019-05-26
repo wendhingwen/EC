@@ -72,9 +72,10 @@
         </div>
     </nav>
 </header>
+
 <div class="container text-center mt-5">
     <div class="content">
-        <h2 class="mb-4">聯繫接洽</h2>
+        <h2 class="mb-4">GET IN TOUCH</h2>
         <div class="full-text">
             <p>
                 Whether you have a question about our products, feedback on our services, or require specific assistance from
@@ -92,44 +93,46 @@
             </p>
         </div>
     </div>
-
-    <form action="#">
+    <hr>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
         <div class="input-group text-left justify-content-center">
             <div class="input-item">
                 <label for="name">Name *</label>
                 <input id="name" name="name" class="form-control" type="text" data-val="true"
                        data-val-required="This field is required." required="required" />
-                <small>
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                    special
-                    characters, or emoji.
-                </small>
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
             </div>
 
             <div class="input-item">
                 <label for="contact-email">CONTACT EMAIL *</label>
-                <input id="contact-email" name="contact-email" class="form-control" type="email" data-val="true"
+                <input id="contact-email" name="email" class="form-control" type="email" data-val="true"
                        data-val-required="This field is required." required="required" />
-                <small>
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                    special
-                    characters, or emoji.
-                </small>
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
             </div>
 
             <div class="input-item">
                 <label for="telephone">CONTACT TELEPHONE NUMBER</label>
-                <input id="telephone" name="telephone" class="form-control" type="tel" data-val="true" />
-                <small>
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                    special
-                    characters, or emoji.
-                </small>
+                <input id="telephone" name="phone" class="form-control" type="tel" data-val="true" />
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
             </div>
 
             <div class="input-item">
                 <label for="category">Category *</label>
-                <select id="category" name="category" title="" class="PrimaryField form-control" data-val="true"
+                <select id="category" name="questionCategory" title="" class="PrimaryField form-control" data-val="true"
                         data-val-required="This field is required." required="required">
                     <option value="">--Please Select--</option>
                     <option value="The Macallan Online Shop">The Macallan Online Shop</option>
@@ -142,25 +145,25 @@
                     <option value="Working with The Macallan">Working with The Macallan</option>
                     <option value="Other">Other</option>
                 </select>
-                <small>
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                    special
-                    characters, or emoji.
-                </small>
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
             </div>
 
             <div class="input-item">
                 <label for="description">Description</label>
-                <textarea name="description" class="form-control"></textarea>
-                <small>
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
-                    special
-                    characters, or emoji.
-                </small>
+                <textarea name="comments" class="form-control"></textarea>
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
             </div>
         </div>
+        @*@Html.RenderAction("Contact");*@
         <button type="submit" class="btn btn-block" id="submit">SUBMIT</button>
-        <!-- <input type="submit" value="SUBMIT" id="submit"> -->
-    </form>
+    }
 
 </div>
