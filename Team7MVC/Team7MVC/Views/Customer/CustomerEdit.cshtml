@@ -4,207 +4,138 @@
     ViewBag.Title = "CustomerEdit";
 }
 
-<div class="main-panel">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                <div class="logo-image-small">
-                    <img src="~/assets/img/logo-small.png">
+<div class="content">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img src="~/Assets/img/img_user/damir-bosnjak.jpg" alt="...">
                 </div>
-            </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Creative Tim
-            </a>
-        </div>
-        <div class="sidebar-wrapper">
-            <ul class="nav">
-                <li>
-                    <a href="./dashboard.html">
-                        <i class="nc-icon nc-bank"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./icons.html">
-                        <i class="nc-icon nc-diamond"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./map.html">
-                        <i class="nc-icon nc-pin-3"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./notifications.html">
-                        <i class="nc-icon nc-bell-55"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-                <li class="active ">
-                    <a href="./user.html">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>
-                            修改個人資料
+                <div class="card-body">
+                    <div class="author">
+
+                        <img class="avatar border-gray" src="~/Assets/img/img_user/@Html.DisplayFor(model => model.Picture)" alt="@Html.DisplayFor(model => model.CustomerID)">
+                        <h5 class="title">@Html.DisplayFor(model => model.CustomerName)</h5>
+
+                        <p class="description">
+                            性別: @Html.DisplayFor(model => model.Gender)
                         </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./tables.html">
-                        <i class="nc-icon nc-tile-56"></i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="./typography.html">
-                        <i class="nc-icon nc-caps-small"></i>
-                        <p>Typography</p>
-                    </a>
-                </li>
-                <li class="active-pro">
-                    <a href="./upgrade.html">
-                        <i class="nc-icon nc-spaceship"></i>
-                        <p>Upgrade to PRO</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card card-user">
-                    <div class="image">
-                        <img src="~/assets/img/damir-bosnjak.jpg" alt="...">
                     </div>
-                    <div class="card-body">
-                        <div class="author">
 
-                            <img class="avatar border-gray" src="~/assets/img/@Html.DisplayFor(model => model.Picture)" alt="...">
-                            <h5 class="title">@Html.DisplayFor(model => model.CustomerName)</h5>
-
-                            <p class="description">
-                                性別: @Html.DisplayFor(model => model.Gender)
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="card-footer">
-                        <hr>
-                        <div class="button-container">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-6 ml-auto">
-                                    <h5>
-                                        12
-                                        <br>
-                                        <small>Files</small>
-                                    </h5>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                                    <h5>
-                                        2GB
-                                        <br>
-                                        <small>Used</small>
-                                    </h5>
-                                </div>
-                                <div class="col-lg-3 mr-auto">
-                                    <h5>
-                                        24,6$
-                                        <br>
-                                        <small>Spent</small>
-                                    </h5>
-                                </div>
+                </div>
+                <div class="card-footer">
+                    <hr>
+                    <div class="button-container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                                <h5>
+                                    12
+                                    <br>
+                                    <small>Files</small>
+                                </h5>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                                <h5>
+                                    2GB
+                                    <br>
+                                    <small>Used</small>
+                                </h5>
+                            </div>
+                            <div class="col-lg-3 mr-auto">
+                                <h5>
+                                    24,6$
+                                    <br>
+                                    <small>Spent</small>
+                                </h5>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="col-md-8">
-                <div class="card card-user">
-                    <div class="card-header">
-                        <h5 class="card-title">個人資料修改</h5>
-                    </div>
-                    <div class="card-body">
-                        @using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
-
-                            <div class="row">
-                                <div class="col-md-5 pr-1">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 pl-1">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 pr-1">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pl-1">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 pr-1">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="col-md-4 px-1">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
-                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="update ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-primary btn-round">更新資料</button>
-                                </div>
-                            </div>
-                        }
-                    </div>
-
-                </div>
             </div>
 
         </div>
+        <div class="col-md-8">
+            <div class="card card-user">
+                <div class="card-header">
+                    <h5 class="card-title">個人資料修改</h5>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-5 pr-1">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Account, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control", @ReadOnly = true } })
+                                    @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 pl-1">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-primary btn-round">更新資料</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
 
     </div>
+
 </div>
+

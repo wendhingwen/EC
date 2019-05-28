@@ -11,7 +11,7 @@
     <!--     Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    
+
     <!-- CSS Files -->
     <link href="~/Assets/css/Dashboard/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Assets/css/Dashboard/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
@@ -21,42 +21,14 @@
 </head>
 
 <body>
-    <div class="wrapper ">
-        @Html.Partial("Dashboard_Sidebar")
+    <div class="main-panel">
 
-        <div class="main-panel">
-            @Html.Partial("Dashboard_Navbar")
+        @Html.Partial("User_Sidebar")
 
+        @RenderBody()
 
-            @RenderBody()
-            <footer class="footer footer-black  footer-white ">
-                <div class="container-fluid">
-                    <div class="row">
-                        <nav class="footer-nav">
-                            <ul>
-                                <li>
-                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                                </li>
-                                <li>
-                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="credits ml-auto">
-                            <span class="copyright">
-                                &copy; @DateTime.Now.Year Build School, made with NASA <i class="nc-icon nc-planet"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
     </div>
-
-
+   
     <!--   Core JS Files   -->
     <script src="~/Assets/js/js_dashboard/core/jquery.min.js"></script>
     <script src="~/Assets/js/js_dashboard/core/popper.min.js"></script>

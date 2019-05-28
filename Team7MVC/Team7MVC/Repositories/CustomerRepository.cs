@@ -29,7 +29,7 @@ namespace Team7MVC.Repositories
 
             using (conn)
             {
-                string sql = "SELECT CustomerID FROM Customers WHERE Account = @CustomerName";
+                string sql = "SELECT * FROM Customers WHERE Account = @CustomerName";
                 customers = conn.QueryFirstOrDefault<Customers>(sql, new { CustomerName = userName });
             }
 
@@ -55,10 +55,9 @@ namespace Team7MVC.Repositories
                                Email = @Email,
                                Phone = @Phone,
                                Address = @Address,
-                               VIP = @VIP ,
-                               Picture = @Picture
+                               VIP = @VIP 
                                where  CustomerID = @CustomerID";
-                conn.Execute(sql, new { customers.CustomerName, customers.Account, customers.Gender, customers.Birthday, customers.Email, customers.Phone, customers.Address, customers.VIP, customers.Picture, CustomerID });
+                conn.Execute(sql, new { customers.CustomerName, customers.Account, customers.Gender, customers.Birthday, customers.Email, customers.Phone, customers.Address, customers.VIP, CustomerID });
             }
         }
     }

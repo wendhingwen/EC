@@ -167,8 +167,10 @@
     <Content Include="Assets\css\shopping-cart.css" />
     <Content Include="Assets\demo\demo.css" />
     <Content Include="Assets\demo\demo.js" />
+    <Content Include="Assets\img\img_user\damir-bosnjak.jpg" />
     <Content Include="Assets\img\img_dashboard\admin.jpg" />
     <Content Include="Assets\img\img_dashboard\planet.jpg" />
+    <Content Include="Assets\img\img_user\mike.jpg" />
     <Content Include="Assets\img_Index\bruno-martins-442161-unsplash.jpg" />
     <Content Include="Assets\img_Index\card01.jpg" />
     <Content Include="Assets\img_Index\card02.png" />
@@ -314,7 +316,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Dashboard_Layout.cshtml" />
     <Content Include="Views\Shared\Dashboard_Navbar.cshtml" />
-    <Content Include="Views\Shared\Dashboard__Sidebar.cshtml" />
+    <Content Include="Views\Shared\Dashboard_Sidebar.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Messages.cshtml" />
     <Content Include="Views\Admin\_ViewStart.cshtml" />
@@ -343,6 +345,9 @@
     <Content Include="Views\Wine\_Payment.cshtml" />
     <Content Include="Views\Wine\Contact.cshtml" />
     <Content Include="Views\Wine\Payment.cshtml" />
+    <Content Include="Views\Shared\User_Sidebar.cshtml" />
+    <Content Include="Views\Shared\User_Layout.cshtml" />
+    <Content Include="Views\Customer\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

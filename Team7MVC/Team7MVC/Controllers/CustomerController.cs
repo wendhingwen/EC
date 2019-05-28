@@ -31,7 +31,7 @@ namespace Team7MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CustomerEdit(string CustomerName, string Account, string Gender, string Email, string Phone, string Address, DateTime Birthday, string VIP, string Picture)
+        public ActionResult CustomerEdit(string CustomerName, string Account, string Gender, string Email, string Phone, string Address, DateTime Birthday, string VIP)
         {
             Customers customers = new Customers()
             {
@@ -41,13 +41,12 @@ namespace Team7MVC.Controllers
                 Birthday = Birthday,
                 Email = Email,
                 Phone = Phone,
-                Address = Address,
-                Picture = Picture
+                Address = Address
             };
 
             _repo.UpdateCustomer(customers);
 
-            return RedirectToAction("CustomersEdit");
+            return RedirectToAction("CustomerEdit");
         }
     }
 }

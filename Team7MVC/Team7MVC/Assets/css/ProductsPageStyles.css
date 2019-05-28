@@ -1,5 +1,5 @@
 html {
-    background: #ffffd1; /*背景色*/
+    /*background: #ffffd1; 背景色*/
     font-size: 16px; /*字型大小*/
     /*font-family: sans-serif;*/ /*字型*/
     line-height: 1.4; /*行高*/
@@ -8,6 +8,9 @@ html {
 }
 
 body {
+    font-family: adobe-garamond-pro, times new roman;
+    background: #fff url('../img_ProductPage/bg_wood.jpg') center top no-repeat;
+    background-size: 100%;
     margin: 0;
 }
 
