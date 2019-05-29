@@ -157,6 +157,7 @@
     <Compile Include="ViewModels\ShopListsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\aboutme.css" />
     <Content Include="Assets\css\ContactStyles.css" />
     <Content Include="Assets\css\Dashboard\bootstrap.min.css" />
     <Content Include="Assets\css\Dashboard\paper-dashboard.css" />
@@ -171,6 +172,16 @@
     <Content Include="Assets\img\img_dashboard\admin.jpg" />
     <Content Include="Assets\img\img_dashboard\planet.jpg" />
     <Content Include="Assets\img\img_user\mike.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\acorn-to-glass-inside-the-macallan.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\distillery-tour-background_0.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\inside_the_macallan.png" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\logo_dark.png" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\mac-social-historic-images-cask-warehouse.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\mac-social-historic-images-harvest-black-and-white.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\mac-social-speyside.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\macallan-wood-close-up-of-cask-being-disgorged.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\macallan-wood-maturation-en-primeur-infront-of-casks.jpg" />
+    <Content Include="Assets\css\img_Iinside_the_macallannside\six-pillars-editorial-feature.png" />
     <Content Include="Assets\img_Index\bruno-martins-442161-unsplash.jpg" />
     <Content Include="Assets\img_Index\card01.jpg" />
     <Content Include="Assets\img_Index\card02.png" />
@@ -349,6 +360,7 @@
     <Content Include="Views\Shared\User_Layout.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Wine\Iinside_the_macallannside.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
