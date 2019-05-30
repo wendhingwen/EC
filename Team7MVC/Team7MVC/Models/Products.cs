@@ -8,7 +8,7 @@ namespace Team7MVC.Models
 {
     public class Products
     {
-        [Display(Name = "商品ID")]
+        [Display(Name = "商品編號")]
         public int ProductID { get; set; }
         [Display(Name = "名稱")]
         public string ProductName { get; set; }
@@ -18,7 +18,7 @@ namespace Team7MVC.Models
         public int Year { get; set; }
         [Display(Name = "容量")]
         public int Capacity { get; set; }
-        [Display(Name = "價格")]
+        [Display(Name = "售價")]
         public decimal UnitPrice { get; set; }
         [Display(Name = "庫存")]
         public int Stock { get; set; }

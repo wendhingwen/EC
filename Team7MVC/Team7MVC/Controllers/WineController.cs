@@ -109,16 +109,10 @@ namespace Team7MVC.Controllers
 
             CreateMessagesData(m);
             return View("index");
-            //var question = new Questions { Name = name, Email = email, Phone = phone, QuestionCategory = questionCategory, Comments = comments, Datetime = DateTime.Now };
-
-            //var ques = _repo.CreateQuestions(question);
-            //return View(ques);         
         }
 
         public int CreateMessagesData(Messages m)
         {
-            //var question = new Questions { Name = name, Email = email, Phone = phone, QuestionCategory = questionCategory, Comments = comments, Datetime = DateTime.Now };
-
             return mess_repo.CreateMessages(m);
         }
 

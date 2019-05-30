@@ -7,6 +7,7 @@ namespace Team7MVC.ViewModels
 {
     public class ShopListsViewModel
     {
+        public int ProductId { get; set; }
         public string Picture { get; set; }
         public string ProductName { get; set; }
         public int Year { get; set; }

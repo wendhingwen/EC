@@ -26,7 +26,7 @@ namespace Team7MVC.Controllers
         [HttpGet]
         public ActionResult CustomerEdit()
         {
-            var customers = _repo.GetCustomersId(User.Identity.Name);
+            var customers = _repo.GetCustomerById(User.Identity.Name);
             return View(customers);
         }
 

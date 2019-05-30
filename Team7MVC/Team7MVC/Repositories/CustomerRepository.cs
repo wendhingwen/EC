@@ -23,7 +23,7 @@ namespace Team7MVC.Repositories
             conn = new SqlConnection(connString);
         }
 
-        public Customers GetCustomersId(string userName)
+        public Customers GetCustomerById(string userName)
         {
             Customers customers;
 
@@ -34,6 +34,22 @@ namespace Team7MVC.Repositories
             }
 
             return customers;
+        }
+
+        public int GetCustomerID(string Account)
+        {
+            int CustomerId;
+
+            using (conn)
+            {
+                string sql = @"select CustomerID 
+                                from Customers
+                                where Account = @Account";
+
+                CustomerId = conn.QueryFirstOrDefault<int>(sql, new { Account });
+            }
+
+            return CustomerId;
         }
 
         public void UpdateCustomer(Customers customers)

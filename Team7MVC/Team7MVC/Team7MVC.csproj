@@ -134,7 +134,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\WineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +150,7 @@
     <Compile Include="Repositories\AdminRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\WineRepository.cs" />
     <Compile Include="ViewModels\AdminCustomersViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -225,6 +226,7 @@
     <Content Include="Assets\img_Products\28.jpg" />
     <Content Include="Assets\img_Products\29.jpg" />
     <Content Include="Assets\img_Products\3.jpg" />
+    <Content Include="Assets\img_Products\30.jpg" />
     <Content Include="Assets\img_Products\4.jpg" />
     <Content Include="Assets\img_Products\5.jpg" />
     <Content Include="Assets\img_Products\6.jpg" />
@@ -331,9 +333,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\Customer.cshtml" />
     <Content Include="Views\Admin\Product.cshtml" />
     <Content Include="Views\Admin\Order.cshtml" />
@@ -349,10 +348,13 @@
     <Content Include="Views\Shared\User_Layout.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\ShoppingCart.cshtml" />
+    <Content Include="Views\Product\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
