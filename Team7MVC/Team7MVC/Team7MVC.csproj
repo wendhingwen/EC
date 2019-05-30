@@ -157,6 +157,7 @@
     <Compile Include="ViewModels\ShopListsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\aboutme.css" />
     <Content Include="Assets\css\ContactStyles.css" />
     <Content Include="Assets\css\Dashboard\bootstrap.min.css" />
     <Content Include="Assets\css\Dashboard\paper-dashboard.css" />
@@ -167,10 +168,30 @@
     <Content Include="Assets\css\shopping-cart.css" />
     <Content Include="Assets\demo\demo.css" />
     <Content Include="Assets\demo\demo.js" />
-    <Content Include="Assets\img\img_user\damir-bosnjak.jpg" />
-    <Content Include="Assets\img\img_dashboard\admin.jpg" />
-    <Content Include="Assets\img\img_dashboard\planet.jpg" />
-    <Content Include="Assets\img\img_user\mike.jpg" />
+    <Content Include="Assets\images\acorn-to-glass-inside-the-macallan.jpg" />
+    <Content Include="Assets\images\distillery-tour-background_0.jpg" />
+    <Content Include="Assets\images\inside_the_macallan.png" />
+    <Content Include="Assets\images\logo_dark.png" />
+    <Content Include="Assets\images\mac-social-historic-images-cask-warehouse.jpg" />
+    <Content Include="Assets\images\mac-social-historic-images-harvest-black-and-white.jpg" />
+    <Content Include="Assets\images\mac-social-speyside.jpg" />
+    <Content Include="Assets\images\macallan-wood-close-up-of-cask-being-disgorged.jpg" />
+    <Content Include="Assets\images\macallan-wood-maturation-en-primeur-infront-of-casks.jpg" />
+    <Content Include="Assets\images\six-pillars-editorial-feature.png" />
+    <Content Include="Assets\img_Inside_the_macallane\acorn-to-glass-inside-the-macallan.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\distillery-tour-background_0.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\inside_the_macallan.png" />
+    <Content Include="Assets\img_Inside_the_macallane\logo_dark.png" />
+    <Content Include="Assets\img_Inside_the_macallane\mac-social-historic-images-cask-warehouse.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\mac-social-historic-images-harvest-black-and-white.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\mac-social-speyside.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\macallan-wood-close-up-of-cask-being-disgorged.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\macallan-wood-maturation-en-primeur-infront-of-casks.jpg" />
+    <Content Include="Assets\img_Inside_the_macallane\six-pillars-editorial-feature.png" />
+    <Content Include="Assets\img_user\damir-bosnjak.jpg" />
+    <Content Include="Assets\img_dashboard\admin.jpg" />
+    <Content Include="Assets\img_dashboard\planet.jpg" />
+    <Content Include="Assets\img_user\mike.jpg" />
     <Content Include="Assets\img_Index\bruno-martins-442161-unsplash.jpg" />
     <Content Include="Assets\img_Index\card01.jpg" />
     <Content Include="Assets\img_Index\card02.png" />
@@ -349,6 +370,7 @@
     <Content Include="Views\Shared\User_Layout.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Wine\Inside_the_macallane.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

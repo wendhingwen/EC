@@ -136,5 +136,11 @@ namespace Team7MVC.Controllers
             return RedirectToAction("Index", "Wine");
         }
 
+        // GET: Wine
+        public ActionResult Inside_the_macallane()
+        {
+            return View();
+        }
+
     }
 }
