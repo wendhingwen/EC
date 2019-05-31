@@ -3,32 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using Team7MVC.ViewModels;
-using Team7MVC.Repositories;
 using Team7MVC.Models;
+using Team7MVC.Repositories;
+using Team7MVC.ViewModels;
 
 namespace Team7MVC.Controllers
 {
-    public class WineController : Controller
+    public class ProductController : Controller
     {
-        public readonly WineRepository _repo;
-        public readonly MessageRepository mess_repo;
+        public readonly ProductRepository _repo;
 
-        public WineController()
+        public ProductController()
         {
-            _repo = new WineRepository();
-            mess_repo = new MessageRepository();
+            _repo = new ProductRepository();
         }
-
-        // GET: Wine
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        // GET: Product
         [HttpGet]
-        public ActionResult ProductPage(int? Id)
+        public ActionResult Index(int? Id)
         {
             List<Products> products;
             if (Id == 1)
@@ -52,7 +43,7 @@ namespace Team7MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProductPage(string search, int? Year_s, int? Year_e, decimal? Price_s, decimal? Price_e, string[] Origin, string[] Category)
+        public ActionResult Index(string search, int? Year_s, int? Year_e, decimal? Price_s, decimal? Price_e, string[] Origin, string[] Category)
         {
             List<Products> products;
 
@@ -92,6 +83,30 @@ namespace Team7MVC.Controllers
 
 
             return View(products);
+        }
+
+        [HttpGet]
+        public ActionResult ProductDetail(int Id)
+        {
+            var product = _repo.GetProductById(Id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult ProductDetail(int ProductId, int buyQty)
+        {
+            //var product = _repo.GetProductById(Id);
+
+            //ShopListsViewModel shopLists = new ShopListsViewModel
+            //{
+            //    ProductId = product.ProductID,
+            //    Price = product.UnitPrice,
+            //    Quantity = buyQty
+            //};
+
+            _repo.CreateShoppingCartData(User.Identity.Name, ProductId, buyQty);
+
+            return RedirectToAction("ShoppingCart");
         }
 
         [Authorize]
@@ -137,67 +152,5 @@ namespace Team7MVC.Controllers
 
             return RedirectToAction("Index", "Wine");
         }
-
-        [HttpGet]
-        public ActionResult Contact()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Contact(string name, string email, string phone, string questionCategory, string comments)
-        {
-            ViewData["Name"] = name;
-            ViewData["Email"] = email;
-            ViewData["Phone"] = phone;
-            ViewData["QuestionCategory"] = questionCategory;
-            ViewData["Comments"] = comments;
-
-            Messages m = new Messages
-            {
-                Name = name,
-                Email = email,
-                Phone = phone,
-                QuestionCategory = questionCategory,
-                Comments = comments,
-                Datetime = DateTime.Now
-            };
-
-            CreateMessagesData(m);
-            return View("index");
-            //var question = new Questions { Name = name, Email = email, Phone = phone, QuestionCategory = questionCategory, Comments = comments, Datetime = DateTime.Now };
-
-            //var ques = _repo.CreateQuestions(question);
-            //return View(ques);         
-        }
-
-        public int CreateMessagesData(Messages m)
-        {
-            //var question = new Questions { Name = name, Email = email, Phone = phone, QuestionCategory = questionCategory, Comments = comments, Datetime = DateTime.Now };
-
-            return mess_repo.CreateMessages(m);
-        }
-
-        [HttpGet]
-        [Authorize]
-        public ActionResult Login(string ActionName)
-        {
-            return View(ActionName);
-        }
-
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-
-            return RedirectToAction("Index", "Wine");
-        }
-
-        // GET: Wine
-        public ActionResult Inside_the_macallane()
-        {
-            return View();
-        }
-
     }
 }

@@ -15,22 +15,25 @@
                     <a class="nav-link text-white px-4" href="@Url.Action("Inside_the_macallane","Wine")">INSIDE THE MACALLAN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white px-4" href="@Url.Action("ProductPage","Wine")">SHOP</a>
+                    <a class="nav-link text-white px-4" href="@Url.Action("Index","Product")">SHOP</a>
                 </li>
             </ul>
-            <div class="input-group mr-5 px-3" id="header-search">
-                <input type="text" class="form-control text-white border-dark whiteplaceholder" placeholder="Search"
-                       aria-label="Search" aria-describedby="search" id="search-input">
-                <div class="input-group-append">
-                    <button class="btn btn-dark border-0 text-white font-weight-bold" type="button"
-                            id="search">
-                        Search
-                    </button>
+            @using (Html.BeginForm("ProductPage", "Wine"))
+            {
+                <div class="input-group mr-5 px-3" id="header-search">
+                    <input type="text" class="form-control text-white border-dark whiteplaceholder" placeholder="Search"
+                           aria-label="Search" aria-describedby="search" id="search-input" name="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark border-0 text-white font-weight-bold" type="submit"
+                                id="search">
+                            Search
+                        </button>
+                    </div>
                 </div>
-            </div>
+            }
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white px-3" href="@Url.Action("ShoppingCart","Wine")">
+                    <a class="nav-link text-white px-3" href="@Url.Action("ShoppingCart","Product")">
                         <i class="fas fa-shopping-bag"></i>
                     </a>
                 </li>

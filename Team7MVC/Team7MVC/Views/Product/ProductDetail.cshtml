@@ -1,0 +1,114 @@
+﻿@model Team7MVC.Models.Products
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<div class="container" style="margin:150px auto 80px">
+
+    @using (Html.BeginForm("ProductDetail", "Product", new { ProductId = Model.ProductID }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="form-horizontal">
+                @*<hr />*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+
+                    <div class="col-6 text-center" style="margin:auto auto">
+                        <img src="~/Assets/img_Products/@Html.DisplayFor(model => model.Picture)" style="width:50%" />
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.DisplayFor(model => model.ProductName)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.ProductID)】&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.ProductID)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.Origin)】&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.Origin)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.Year)】&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.Year)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.Capacity)】&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.Capacity)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.Introduction)】<br />
+                            @Html.DisplayFor(model => model.Introduction)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.UnitPrice)】&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.UnitPrice)
+                        </div>
+
+                        <div class="form-group">
+                            【@Html.DisplayNameFor(model => model.Stock)】&nbsp;&nbsp;
+                            @Html.DisplayFor(model => model.Stock)
+                        </div>
+
+                        <div class="form-group">
+                            【數量】&nbsp;&nbsp;
+                            <select name="buyQty" id="buyQty">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-danger" id="submit">BUY NOW</button>
+                                @*@Html.ActionLink("BUY NOW", "ProductDetail", new { id = Model.ProductID }, new { @class = "btn btn-danger" ,@type = "submit"})*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "../../Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+            $(window).scroll(function () {
+                var scrollVal = $(this).scrollTop();
+                if (scrollVal > 0) {
+                    $("header").addClass("fixed-header");
+                }
+                if (scrollVal == 0) {
+                    $("header").removeClass("fixed-header");
+                }
+            });
+        });
+    </script>
+}

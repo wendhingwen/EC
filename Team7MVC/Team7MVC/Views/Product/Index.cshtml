@@ -12,13 +12,13 @@
 
 
 
-    <div style="margin: 8rem auto 6rem;">
-        <p class="text-center h4 mt-3" style="color:dimgrey;"><i>─ 我們的威士忌 ─</i></p>
-        <p class="text-center h2 my-4">探索我們的單一麥芽威士忌</p>
-        <p class="text-center h5 mb-3" style="color:dimgrey;" v>
-            每一款 Macallan 單一麥芽威士忌均展現出自 1824 年以來，我們對於製桶與釀酒工藝無人能及的堅持。
-        </p>
-    </div>
+<div style="margin: 8rem auto 6rem;">
+    <p class="text-center h4 mt-3" style="color:dimgrey;"><i>─ 我們的威士忌 ─</i></p>
+    <p class="text-center h2 my-4">探索我們的單一麥芽威士忌</p>
+    <p class="text-center h5 mb-3" style="color:dimgrey;" v>
+        每一款 Macallan 單一麥芽威士忌均展現出自 1824 年以來，我們對於製桶與釀酒工藝無人能及的堅持。
+    </p>
+</div>
 
 <div id="exhibit" class="row m-0 p-0 mb-5">
     <!-- 選單 -->
@@ -156,15 +156,15 @@
             @foreach (var item in Model)
             {
                 <div class="product-block">
+                    <a href="@Url.Action("ProductDetail","Product" , new { id = item.ProductID })">
+                        <div class="product-img">
+                            <img class="picture-wine" src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture) " alt="p_sherry_oak" title="p_sherry_oak" />
 
-                    <div class="product-img">
-                        <img class="picture-wine" src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture) " alt="p_sherry_oak" title="p_sherry_oak" />
+                            <img class="picture-color" src="~/Assets/img_ProductPage/circle-hover.png">
 
-                        <img class="picture-color" src="~/Assets/img_ProductPage/circle-hover.png">
-
-                        <img class="picture-nocolor" src="~/Assets/img_ProductPage/circle.jpg">
-                    </div>
-
+                            <img class="picture-nocolor" src="~/Assets/img_ProductPage/circle.jpg">
+                        </div>
+                    </a>
 
 
                     <div class="product-intro">
@@ -180,17 +180,17 @@
     </div>
 </div>
 @*<div class="jumbotron jumbotron-fluid my-0 "
-     style="text-align: center; background-image: url('../../Assets/img_Index/footer_subscribe_bg.jpg'); background-size: 100%;">
-    <p class="text-white">訂閱 THE MACALLAN 的最新消息</p>
-    <div class="input-group mx-auto" style="width: 26rem;">
-        <input type="text" class="form-control text-white" placeholder="輸入您的電子郵件地址"
-               aria-label="Recipient's username" aria-describedby="basic-addon2"
-               style="border: none; border-radius: 0; background-color: rgba(255,255,255,.1);">
-        <div class="input-group-append">
-            <button type="button" class="border border-dark bg-dark text-white" style="width: 8rem;">訂閱</button>
+         style="text-align: center; background-image: url('../../Assets/img_Index/footer_subscribe_bg.jpg'); background-size: 100%;">
+        <p class="text-white">訂閱 THE MACALLAN 的最新消息</p>
+        <div class="input-group mx-auto" style="width: 26rem;">
+            <input type="text" class="form-control text-white" placeholder="輸入您的電子郵件地址"
+                   aria-label="Recipient's username" aria-describedby="basic-addon2"
+                   style="border: none; border-radius: 0; background-color: rgba(255,255,255,.1);">
+            <div class="input-group-append">
+                <button type="button" class="border border-dark bg-dark text-white" style="width: 8rem;">訂閱</button>
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 @*<footer class="row p-0 m-0" style="background:#000;">
         <div class="col-3 mt-5 pl-5">

@@ -1,23 +1,22 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using Team7MVC.ViewModels;
-using Dapper;
 using Team7MVC.Models;
+using Team7MVC.ViewModels;
 
 namespace Team7MVC.Repositories
 {
-    public class WineRepository
+    public class ProductRepository
     {
         private static string connString;
         private readonly SqlConnection conn;
+        private SqlConnection _conn;
 
-        int affectedRows = -1;
-
-        public WineRepository()
+        public ProductRepository()
         {
             if (string.IsNullOrEmpty(connString))
             {
@@ -25,6 +24,7 @@ namespace Team7MVC.Repositories
             }
 
             conn = new SqlConnection(connString);
+            //_conn = new SqlConnection(connString);
         }
 
         public List<Products> GetProducts()
@@ -201,6 +201,50 @@ namespace Team7MVC.Repositories
             return products;
         }
 
+        public Products GetProductById(int id)
+        {
+            Products product;
+
+            using (conn)
+            {
+                string sql = "select * from Products where ProductID = @ProductId";
+                product = conn.QueryFirstOrDefault<Products>(sql, new { ProductId = id });
+            }
+
+            return product;
+        }
+
+        public void CreateShoppingCartData(string Account, int ProductId, int buyQty)
+        {
+            int OrderQty = 0;
+            using (conn)
+            {
+                string sql = @"SELECT s.Quantity 
+                               FROM ShopLists s
+                               INNER JOIN Customers c ON c.CustomerID = s.CustomerID
+                               WHERE  c.Account = @Account AND s.ProductID = @ProductId";
+                OrderQty = conn.QueryFirstOrDefault<int>(sql, new { Account, ProductId });
+
+                if (OrderQty == 0)
+                {
+                    sql = @"insert into ShopLists (CustomerID, ProductID, Price, Quantity)
+                            values((select CustomerID from Customers where Account = @Account), @ProductID, (select UnitPrice from Products where ProductID = @Product2ID),@Quantity)";
+                    conn.Execute(sql, new { Account, ProductID = ProductId, Product2ID = ProductId, Quantity = buyQty });
+                }
+                else
+                {
+                    OrderQty = OrderQty + buyQty;
+
+                    sql = @"UPDATE ShopLists 
+                            SET Quantity = @OrderQty
+                            FROM ShopLists s
+                            INNER JOIN Customers c ON c.CustomerID = s.CustomerID
+                            WHERE  c.Account = @Account AND ProductID = @ProductId";
+                    conn.Execute(sql, new { OrderQty, Account, ProductId });
+                }
+            }
+        }
+
         public List<ShopListsViewModel> ShopList(string CustomerID)
         {
             List<ShopListsViewModel> shopLists;
@@ -209,7 +253,7 @@ namespace Team7MVC.Repositories
             {
                 string sql = @"select p.Picture, p.ProductName, p.Year, p.Origin, sh.Price,
                                 sh.Quantity, (sh.Price * sh.Quantity) as TotalCost
-                                from ShopList as sh
+                                from ShopLists as sh
                                 INNER JOIN Products as p on p.ProductID = sh.ProductID
                                 INNER JOIN Customers as c on c.CustomerID = sh.CustomerID
                                 where c.Account = @CustomerID";
@@ -217,22 +261,6 @@ namespace Team7MVC.Repositories
             }
 
             return shopLists;
-        }
-
-        public int GetCustomerID(string Account)
-        {
-            int CustomerId;
-
-            using (conn)
-            {
-                string sql = @"select CustomerID 
-                                from Customers
-                                where Account = @Account";
-
-                CustomerId = conn.QueryFirstOrDefault<int>(sql, new { Account });
-            }
-
-            return CustomerId;
         }
 
         public void Payment(Orders orders, string Account)
@@ -257,7 +285,7 @@ namespace Team7MVC.Repositories
                 OrderID = conn.QueryFirstOrDefault<int>(sql);
 
                 sql = @"select sh.CustomerID, ProductID, Price, Quantity 
-                        from ShopList as sh
+                        from ShopLists as sh
                         INNER JOIN Customers as c on c.CustomerID = sh.CustomerID
                         where Account = @Account";
                 shopLists = conn.Query<ShopLists>(sql, new { Account }).ToList();
@@ -272,16 +300,20 @@ namespace Team7MVC.Repositories
             }
         }
 
-        public int CreateMessages(Messages mess)
+        public int GetCustomerID(string Account)
         {
-            //List<Questions> questions;
+            int CustomerId;
+
             using (conn)
             {
-                string sql = @"INSERT INTO Messages(Name, Email, Phone, QuestionCategory, Comments, Datetime) VALUES (@name, @email, @phone, @questionCategory, @comments, @dateTime)";
-                affectedRows = conn.Execute(sql, new { mess.Name, mess.Email, mess.Phone, mess.QuestionCategory, mess.Comments, mess.Datetime });
+                string sql = @"select CustomerID 
+                                from Customers
+                                where Account = @Account";
+
+                CustomerId = conn.QueryFirstOrDefault<int>(sql, new { Account });
             }
 
-            return affectedRows;
+            return CustomerId;
         }
     }
 }
