@@ -71,8 +71,8 @@ namespace Team7MVC.Controllers
 
             //Response.Redirect(FormsAuthentication.GetRedirectUrl(name, true));
 
-            return Redirect(FormsAuthentication.GetRedirectUrl(account, true));
-            //return RedirectToAction("Index", "Wine");
+            //return Redirect(FormsAuthentication.GetRedirectUrl(account, true));
+            return RedirectToAction("Index", "Wine");
         }
 
         [HttpGet]

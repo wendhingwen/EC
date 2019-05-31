@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\WineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +151,7 @@
     <Compile Include="Repositories\AdminRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\WineRepository.cs" />
     <Compile Include="ViewModels\AdminCustomersViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -361,16 +363,18 @@
     <Content Include="Views\Wine\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Wine\ProductPage.cshtml" />
-    <Content Include="Views\Wine\ShoppingCart.cshtml" />
+    <Content Include="Views\Product\ShoppingCart.cshtml" />
     <Content Include="Views\Shared\ShoppingCartPartial.cshtml" />
     <Content Include="Views\Wine\_Payment.cshtml" />
     <Content Include="Views\Wine\Contact.cshtml" />
-    <Content Include="Views\Wine\Payment.cshtml" />
+    <Content Include="Views\Product\Payment.cshtml" />
     <Content Include="Views\Shared\User_Sidebar.cshtml" />
     <Content Include="Views\Shared\User_Layout.cshtml" />
     <Content Include="Views\Customer\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Views\Wine\Inside_the_macallane.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
