@@ -75,12 +75,12 @@
                         <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.Origin)</td>
                         <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.Price)</td>
                         <td class="Detail-table-title">
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>@Html.DisplayFor(modelItem => item.Quantity)</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
+                            <select class="custom-select" id="inputGroupSelect01" name="orderQty">
+                                <option value="00" hidden>@Html.DisplayFor(modelItem => item.Quantity)</option>
+                                @for (int i = 1; i <= item.Stock; i++)
+                                {
+                                    <option>@i </option>
+                                }
                             </select>
                         </td>
                         <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.TotalCost)</td>

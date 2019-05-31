@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "ProductDetail";
+    int InStock = Model.Stock;
 }
 
 <div class="container" style="margin:150px auto 80px">
@@ -62,11 +63,10 @@
                         <div class="form-group">
                             【數量】&nbsp;&nbsp;
                             <select name="buyQty" id="buyQty">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                @for (int i = 1; i <= InStock; i++)
+                                {
+                                    <option>@i</option>
+                                }
                             </select>
                         </div>
 
