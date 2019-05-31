@@ -139,11 +139,10 @@ namespace Team7MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult OrderCreate(int OrderID, int CustomerID, DateTime OrderDate, DateTime RequiredDate, DateTime ShippedDate, int ShipperID, string ShipName, string ShipAddress, decimal Freight, string PayWay, DateTime PayDate)
+        public ActionResult OrderCreate(int CustomerID, DateTime OrderDate, DateTime RequiredDate, DateTime ShippedDate, int ShipperID, string ShipName, string ShipAddress, decimal Freight, string PayWay, DateTime PayDate)
         {
             Orders order = new Orders()
             {
-                OrderID = OrderID,
                 CustomerID = CustomerID,
                 OrderDate = OrderDate,
                 RequiredDate = RequiredDate,

@@ -124,9 +124,9 @@ namespace Team7MVC.Repositories
         {
             using (conn)
             {
-                string sql = @"insert into Orders (OrderID,CustomerID,OrderDate,RequiredDate,ShippedDate,ShipperID,ShipName,ShipAddress,Freight,PayWay,PayDate)
-                                values(@OrderID,@CustomerID,@OrderDate,@RequiredDate,@ShippedDate,@ShipperID,@ShipName,@ShipAddress,@Freight,@PayWay,@PayDate);";
-                conn.Execute(sql, new { order.OrderID, order.CustomerID, order.OrderDate, order.RequiredDate, order.ShippedDate, order.ShipperID, order.ShipName, order.ShipAddress, order.Freight, order.PayWay, order.PayDate });
+                string sql = @"insert into Orders (CustomerID,OrderDate,RequiredDate,ShippedDate,ShipperID,ShipName,ShipAddress,Freight,PayWay,PayDate)
+                                values(@CustomerID,@OrderDate,@RequiredDate,@ShippedDate,@ShipperID,@ShipName,@ShipAddress,@Freight,@PayWay,@PayDate);";
+                conn.Execute(sql, new { order.CustomerID, order.OrderDate, order.RequiredDate, order.ShippedDate, order.ShipperID, order.ShipName, order.ShipAddress, order.Freight, order.PayWay, order.PayDate });
             }
         }
 
@@ -146,7 +146,7 @@ namespace Team7MVC.Repositories
                                 Freight=@Freight,
                                 PayWay=@PayWay,
                                 PayDate=@PayDate";
-                conn.Execute(sql, new { order.OrderID, order.CustomerID, order.OrderDate, order.RequiredDate, order.ShippedDate, order.ShipperID, order.ShipName, order.ShipAddress, order.Freight, order.PayWay, order.PayDate });
+                conn.Execute(sql, new { order.CustomerID, order.OrderDate, order.RequiredDate, order.ShippedDate, order.ShipperID, order.ShipName, order.ShipAddress, order.Freight, order.PayWay, order.PayDate });
             }
         }
 
