@@ -120,6 +120,46 @@ namespace Team7MVC.Repositories
             return orders;
         }
 
+        public void CreateOrder(Orders order)
+        {
+            using (conn)
+            {
+                string sql = @"insert into Orders (OrderID,CustomerID,OrderDate,RequiredDate,ShippedDate,ShipperID,ShipName,ShipAddress,Freight,PayWay,PayDate)
+                                values(@OrderID,@CustomerID,@OrderDate,@RequiredDate,@ShippedDate,@ShipperID,@ShipName,@ShipAddress,@Freight,@PayWay,@PayDate);";
+                conn.Execute(sql, new { order.OrderID, order.CustomerID, order.OrderDate, order.RequiredDate, order.ShippedDate, order.ShipperID, order.ShipName, order.ShipAddress, order.Freight, order.PayWay, order.PayDate });
+            }
+        }
+
+        public void UpdateOrder(Orders order)
+        {
+            using (conn)
+            {
+                string sql = @"update Orders
+                                set OrderID=@OrderID,
+                                CustomerID=@CustomerID,
+                                OrderDate=@OrderDate,
+                                RequiredDate=@RequiredDate,
+                                ShippedDate=@ShippedDate,
+                                ShipperID=@ShipperID,
+                                ShipName=@ShipName,
+                                ShipAddress=@ShipAddress,
+                                Freight=@Freight,
+                                PayWay=@PayWay,
+                                PayDate=@PayDate";
+                conn.Execute(sql, new { order.OrderID, order.CustomerID, order.OrderDate, order.RequiredDate, order.ShippedDate, order.ShipperID, order.ShipName, order.ShipAddress, order.Freight, order.PayWay, order.PayDate });
+            }
+        }
+
+        public void DeleteOrder(int Id)
+        {
+            using (conn)
+            {
+                string sql = @"delete from Orders
+                                where OrderID = @OrderId";
+                conn.Execute(sql, new { OrderId = Id });
+            }
+        }
+
         #endregion
 
         #region Customer

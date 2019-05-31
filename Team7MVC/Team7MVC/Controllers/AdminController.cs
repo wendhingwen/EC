@@ -131,5 +131,34 @@ namespace Team7MVC.Controllers
 
             return View(messages);
         }
+
+        [HttpGet]
+        public ActionResult OrderCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult OrderCreate(int OrderID, int CustomerID, DateTime OrderDate, DateTime RequiredDate, DateTime ShippedDate, int ShipperID, string ShipName, string ShipAddress, decimal Freight, string PayWay, DateTime PayDate)
+        {
+            Orders order = new Orders()
+            {
+                OrderID = OrderID,
+                CustomerID = CustomerID,
+                OrderDate = OrderDate,
+                RequiredDate = RequiredDate,
+                ShippedDate = ShippedDate,
+                ShipperID = ShipperID,
+                ShipName = ShipName,
+                ShipAddress = ShipAddress,
+                Freight = Freight,
+                PayWay = PayWay,
+                PayDate = PayDate
+            };
+
+            _repo.CreateOrder(order);
+
+            return RedirectToAction("Order");
+        }
     }
 }

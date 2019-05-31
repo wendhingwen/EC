@@ -342,6 +342,9 @@
     <Content Include="Views\Wine\_Payment.cshtml" />
     <Content Include="Views\Wine\Contact.cshtml" />
     <Content Include="Views\Wine\Payment.cshtml" />
+    <Content Include="Views\Admin\OrderCreate.cshtml" />
+    <Content Include="Views\Shared\Admin_Layout.cshtml" />
+    <Content Include="Views\Shared\navbarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
