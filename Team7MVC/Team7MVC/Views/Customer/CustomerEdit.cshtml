@@ -9,12 +9,12 @@
         <div class="col-md-4">
             <div class="card card-user">
                 <div class="image">
-                    <img src="~/Assets/img/img_user/damir-bosnjak.jpg" alt="...">
+                    <img src="~/Assets/img_user/damir-bosnjak.jpg" alt="...">
                 </div>
                 <div class="card-body">
                     <div class="author">
 
-                        <img class="avatar border-gray" src="~/Assets/img/img_user/@Html.DisplayFor(model => model.Picture)" alt="@Html.DisplayFor(model => model.CustomerID)">
+                        <img class="avatar border-gray" src="~/Assets/img_user/@Html.DisplayFor(model => model.Picture)" alt="@Html.DisplayFor(model => model.CustomerID)">
                         <h5 class="title">@Html.DisplayFor(model => model.CustomerName)</h5>
 
                         <p class="description">
@@ -139,3 +139,23 @@
 
 </div>
 
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "/Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+            $("header").addClass("fixed-header");
+        });
+    </script>
+}

@@ -39,7 +39,7 @@ a {
 }
 
 /* header */
-.page-header {
+.header {
     background: none;
     border: none;
     position: absolute;
@@ -51,11 +51,11 @@ a {
     transition: .5s;
 }
 
-    .page-header #logo:hover {
+    .header #logo:hover {
         background: none;
     }
 
-    .page-header img {
+    .header img {
         width: 16.875rem;
         height: 1.875rem;
     }
@@ -66,14 +66,14 @@ a {
     box-shadow: 0 0 5px rgba(15, 15, 15, .3);
 }
 
-.page-header nav {
+.header nav {
     height: 4.5rem;
 }
 /* .page-header #navbarSupportedContent {
     background-color: rgba(255, 255, 255, .9);
     box-shadow: 0 0 5px rgba(15, 15, 15, .3);
 } */
-.page-header .nav-link {
+.header .nav-link {
     padding: 0;
     line-height: 4.5rem;
     text-shadow: rgba(0,0,0,.3) 0 0 3px;
