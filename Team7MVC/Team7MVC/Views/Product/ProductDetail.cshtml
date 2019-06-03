@@ -1,84 +1,116 @@
-﻿@model Team7MVC.Models.Products
+﻿@model Products
 
 @{
     ViewBag.Title = "ProductDetail";
-    int InStock = Model.Stock;
 }
 
-<div class="container" style="margin:150px auto 80px">
+@section CSS
+{
+    <link href="~/Assets/css/ProductDetailStyles.css" rel="stylesheet" />
+}
 
+<div class="container product-detail">
     @using (Html.BeginForm("ProductDetail", "Product", new { ProductId = Model.ProductID }))
     {
         @Html.AntiForgeryToken()
         <div class="container">
             <div class="form-horizontal">
-                @*<hr />*@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="row">
+                <div class="row mb-5">
 
-                    <div class="col-6 text-center" style="margin:auto auto">
-                        <img src="~/Assets/img_Products/@Html.DisplayFor(model => model.Picture)" style="width:50%" />
+                    <div class="product-image col-6 text-center">
+                        <img src="~/Assets/img_Products/@Html.DisplayFor(model => model.Picture)" />
                     </div>
 
-                    <div class="col-6">
-                        <div class="form-group">
+                    <div class="product-content col-6">
+                        <h1 class="name form-group h2 m-0">
                             @Html.DisplayFor(model => model.ProductName)
+                        </h1>
+
+                        <div class="unitPrice d-flex align-items-center my-4">
+                            <h2 class="form-group text-danger m-0">$</h2>
+                            <div class="form-group text-danger font m-0">
+                                @Html.DisplayFor(model => model.UnitPrice)
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.ProductID)】&nbsp;&nbsp;
-                            @Html.DisplayFor(model => model.ProductID)
-                        </div>
+                        <ul class="list-unstyled mb-5">
+                            <li class="id d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.ProductID)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.ProductID)
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="origin d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.Origin)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.Origin)
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="year d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.Year)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.Year)
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="capacity d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.Capacity)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.Capacity) ml
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="quantity d-flex align-items-center">
+                                <h2 class="title form-group m-0">數量</h2>
+                                <div class="form-group my-0 mr-3">
+                                    <input name="buyQty" id="buyQty" type="number" class="form-control text-center"
+                                           value="1" min="1" max="@Html.DisplayFor(model => model.Stock)">
+                                </div>
+                                <div class="form-group d-inline-flex m-0">
+                                    還剩下
+                                    <div class="form-group m-0">
+                                        @Html.DisplayFor(model => model.Stock)
+                                    </div>件
+                                </div>
+                            </li>
+                        </ul>
 
                         <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.Origin)】&nbsp;&nbsp;
-                            @Html.DisplayFor(model => model.Origin)
-                        </div>
-
-                        <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.Year)】&nbsp;&nbsp;
-                            @Html.DisplayFor(model => model.Year)
-                        </div>
-
-                        <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.Capacity)】&nbsp;&nbsp;
-                            @Html.DisplayFor(model => model.Capacity)
-                        </div>
-
-                        <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.Introduction)】<br />
-                            @Html.DisplayFor(model => model.Introduction)
-                        </div>
-
-                        <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.UnitPrice)】&nbsp;&nbsp;
-                            @Html.DisplayFor(model => model.UnitPrice)
-                        </div>
-
-                        <div class="form-group">
-                            【@Html.DisplayNameFor(model => model.Stock)】&nbsp;&nbsp;
-                            @Html.DisplayFor(model => model.Stock)
-                        </div>
-
-                        <div class="form-group">
-                            【數量】&nbsp;&nbsp;
-                            <select name="buyQty" id="buyQty">
-                                @for (int i = 1; i <= InStock; i++)
-                                {
-                                    <option>@i</option>
-                                }
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <button type="submit" class="btn btn-danger" id="submit">BUY NOW</button>
-                                @*@Html.ActionLink("BUY NOW", "ProductDetail", new { id = Model.ProductID }, new { @class = "btn btn-danger" ,@type = "submit"})*@
+                            <div class="col-12 p-0">
+                                <button type="submit" class="btn btn-danger mr-3" id="submit">
+                                    <i class="fas fa-shopping-bag mr-3"></i>BUY NOW
+                                </button>
+                                <a id="back" class="btn btn-secondary" href="@Url.Action("Index","Product")">
+                                    <i class="fas fa-arrow-left mr-3"></i>BACK
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="product-content col-12">
+                        <div class="introduction">
+                            <h2 class="form-group m-0">
+                                @Html.DisplayNameFor(model => model.Introduction)
+                            </h2>
+                            <hr />
+                            <div class="form-group m-0">
+                                @Html.DisplayFor(model => model.Introduction)
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     }

@@ -8,7 +8,7 @@ namespace Team7MVC.Models
 {
     public class Products
     {
-        [Display(Name = "商品ID")]
+        [Display(Name = "商品編號")]
         public int ProductID { get; set; }
         [Display(Name = "名稱")]
         public string ProductName { get; set; }
@@ -30,7 +30,7 @@ namespace Team7MVC.Models
         public string Area { get; set; }
         [Display(Name = "圖片")]
         public string Picture { get; set; }
-        [Display(Name = "介紹")]
+        [Display(Name = "商品詳情")]
         public string Introduction { get; set; }
         [Display(Name = "類別")]
         public int CategoryID { get; set; }

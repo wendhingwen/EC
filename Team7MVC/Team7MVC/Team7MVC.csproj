@@ -165,6 +165,7 @@
     <Content Include="Assets\css\Dashboard\paper-dashboard.css" />
     <Content Include="Assets\css\Dashboard\paper-dashboard.min.css" />
     <Content Include="Assets\css\IndexStyles.css" />
+    <Content Include="Assets\css\ProductDetailStyles.css" />
     <Content Include="Assets\css\ProductsPageStyles.css" />
     <Content Include="Assets\css\shopping-cart-pay.css" />
     <Content Include="Assets\css\shopping-cart.css" />
@@ -303,6 +304,10 @@
     <Content Include="Assets\css\fonts\nucleo-icons.woff" />
     <Content Include="Assets\css\fonts\nucleo-icons.woff2" />
     <Content Include="Assets\js\js_dashboard\paper-dashboard.js.map" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

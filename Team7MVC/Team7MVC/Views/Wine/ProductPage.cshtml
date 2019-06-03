@@ -156,15 +156,15 @@
             @foreach (var item in Model)
             {
                 <div class="product-block">
+                    <a href="@Url.Action("ProductDetail","Product" , new { id = item.ProductID })">
+                        <div class="product-img">
+                            <img class="picture-wine" src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture) " alt="p_sherry_oak" title="p_sherry_oak" />
 
-                    <div class="product-img">
-                        <img class="picture-wine" src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture) " alt="p_sherry_oak" title="p_sherry_oak" />
+                            <img class="picture-color" src="~/Assets/img_ProductPage/circle-hover.png">
 
-                        <img class="picture-color" src="~/Assets/img_ProductPage/circle-hover.png">
-
-                        <img class="picture-nocolor" src="~/Assets/img_ProductPage/circle.jpg">
-                    </div>
-
+                            <img class="picture-nocolor" src="~/Assets/img_ProductPage/circle.jpg">
+                        </div>
+                    </a>
 
 
                     <div class="product-intro">
