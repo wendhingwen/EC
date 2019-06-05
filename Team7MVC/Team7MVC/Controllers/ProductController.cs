@@ -150,7 +150,7 @@ namespace Team7MVC.Controllers
 
             _repo.Payment(orders, User.Identity.Name);
 
-            return RedirectToAction("Index", "Wine");
+            return RedirectToAction("OrderDetail", "OrderDetail");
         }
     }
 }

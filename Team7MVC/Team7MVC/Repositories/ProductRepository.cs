@@ -279,10 +279,10 @@ namespace Team7MVC.Repositories
                 sql = @"select OrderID
                         from Orders as o
                         INNER JOIN Customers as c on c.CustomerID = o.CustomerID
-                        where Account = 'Account01'
+                        where Account = @Account
                         order by OrderID Desc";
 
-                OrderID = conn.QueryFirstOrDefault<int>(sql);
+                OrderID = conn.QueryFirstOrDefault<int>(sql,new { Account});
 
                 sql = @"select sh.CustomerID, ProductID, Price, Quantity 
                         from ShopLists as sh
