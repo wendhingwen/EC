@@ -13,7 +13,7 @@ namespace Team7MVC.Repositories
     public class AdminRepository
     {
         private static string connString;
-        private readonly SqlConnection conn;
+        private SqlConnection conn;
 
         public AdminRepository()
         {
@@ -159,6 +159,74 @@ namespace Team7MVC.Repositories
         }
 
         #endregion
-       
+
+        #region DashBoard資料
+
+        public MonthSaleViewModel GetMonthSale()
+        {
+            MonthSaleViewModel monthSaleViewModels = new MonthSaleViewModel();
+
+            using (conn = new SqlConnection(connString))
+            {
+                decimal[] amount = new decimal[12];
+                string sql = @"select ISNULL(SUM(od.Quantity * od.UnitPrice * od.Discount),0) as Amount from Orders as o
+                            INNER JOIN [Order Details] as od on od.OrderID = o.OrderID
+                            where MONTH(OrderDate) = @Month";
+
+                for (int i = 1; i <= 12; i++)
+                {
+                    amount[i - 1] = conn.QueryFirstOrDefault<decimal>(sql, new { Month = i });
+                }
+                monthSaleViewModels.Amount = amount;
+                monthSaleViewModels.Month = new string[] { "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月" };
+            }
+
+            return monthSaleViewModels;
+        }
+
+        public decimal GetYearSale()
+        {
+            decimal result = 0;
+            using (conn = new SqlConnection(connString))
+            {
+                string sql = @"select ISNULL(SUM(od.Quantity * od.UnitPrice * od.Discount),0) as Amount from Orders as o
+                                INNER JOIN [Order Details] as od on od.OrderID = o.OrderID
+                                where Year(OrderDate) = @year";
+
+                result = conn.QueryFirstOrDefault<decimal>(sql, new { Year = DateTime.Now.Year });
+            }
+
+            return result;
+        }
+
+        public int GetCustomer_Count()
+        {
+            int result = 0;
+            using (conn = new SqlConnection(connString))
+            {
+                string sql = "select COUNT(*) from Customers";
+
+                result = conn.QueryFirstOrDefault<int>(sql);
+            }
+
+            return result;
+        }
+
+        public int GetOrder_Count()
+        {
+            int result = 0;
+            using (conn = new SqlConnection(connString))
+            {
+                string sql = @"select COUNT(*) from Orders
+                                where MONTH(OrderDate) = @Month";
+
+                result = conn.QueryFirstOrDefault<int>(sql, new { Month = DateTime.Now.Month });
+            }
+
+            return result; 
+        }
+
+        #endregion
+
     }
 }

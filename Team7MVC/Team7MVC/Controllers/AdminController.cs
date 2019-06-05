@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Team7MVC.Repositories;
 using Team7MVC.Models;
+using Team7MVC.ViewModels;
 
 namespace Team7MVC.Controllers
 {
@@ -20,7 +21,14 @@ namespace Team7MVC.Controllers
         //Dashboard
         public ActionResult Index()
         {
-            return View();
+            MonthSaleViewModel monthSaleViewModels;
+            monthSaleViewModels = _repo.GetMonthSale();
+            monthSaleViewModels.Year_Sale = _repo.GetYearSale();
+            monthSaleViewModels.Customer_Count = _repo.GetCustomer_Count();
+            monthSaleViewModels.Order_Count = _repo.GetOrder_Count();
+
+
+            return View(monthSaleViewModels);
         }
 
         [HttpGet]
